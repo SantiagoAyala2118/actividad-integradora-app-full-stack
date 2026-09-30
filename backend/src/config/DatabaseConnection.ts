@@ -1,4 +1,4 @@
-import { DatabaseError, Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 
 export class DatabaseConnection {
   private static instance: DatabaseConnection;
