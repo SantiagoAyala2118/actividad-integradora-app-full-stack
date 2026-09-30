@@ -25,6 +25,10 @@ export class DatabaseConnection {
     return DatabaseConnection.instance;
   }
 
+  getSequelize(): Sequelize {
+    return this.sequelize;
+  }
+
   private static getEnv(name: string): string {
     const value = process.env[name];
     if (!value)
