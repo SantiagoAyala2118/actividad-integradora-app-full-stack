@@ -1,20 +1,20 @@
 import { DataTypes, Model } from "sequelize";
 import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 
-//1. Interfaz de atributos del rol
+// Contrato de atributos para el modelo Role
 
 export interface RoleAttributes {
     id?: number;
     name: string;
 };
 
-// 2. Clase Role
+// clase Role
 export class Role extends Model<RoleAttributes> implements RoleAttributes {
   public id?: number;
   public name!: string;
 }
 
-// 3. Inicialización
+// inicializacion del modelo Role
 Role.init(
   {
     id: {
