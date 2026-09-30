@@ -1,9 +1,9 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/DatabaseConnection.ts";
+import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 
 // 1. esta es la interfaz con los atributos del usuario
 export interface UserAttributes {
-    id: number;
+    id?: number;
     name: string;
     email: string;
     password: string;
@@ -22,7 +22,7 @@ export class User extends Model<UserAttributes> implements UserAttributes {
 User.init(
     {
         id: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
@@ -44,8 +44,8 @@ User.init(
             allowNull: false
         },
     },
-    {
-        sequelize,
+    {   
+        sequelize: DatabaseConnection.getInstance().getSequelize(),
         tableName: "User",
     }
 );
