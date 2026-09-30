@@ -16,7 +16,7 @@ export class Subscription extends Model<SubscriptionAttributes> implements Subsc
 
 // inicializar la tabla subscription
 
-Susbscription.init(
+Subscription.init(
   {
     id: {
       type: DataTypes.INTEGER,
