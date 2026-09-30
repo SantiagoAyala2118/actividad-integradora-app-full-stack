@@ -1,4 +1,4 @@
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database/DatabaseConnection.ts";
 
 // 1. esta es la interfaz con los atributos del usuario
@@ -48,4 +48,4 @@ User.init(
         sequelize,
         tableName: "User",
     }
-)
+);
