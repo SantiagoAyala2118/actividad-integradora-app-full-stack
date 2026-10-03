@@ -3,14 +3,17 @@ import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 
 // 1. Interfaz de atributos
 export interface PermissionAttributes {
-  id?: number;   
-  action: string; 
+  id?: number;
+  action: string;
 }
 
 // 2. Clase Permission
-export class Permission extends Model<PermissionAttributes> implements PermissionAttributes {
-  public id?: number;
-  public action!: string;
+export class Permission
+  extends Model<PermissionAttributes>
+  implements PermissionAttributes
+{
+  declare id?: number;
+  declare action: string;
 }
 
 // 3. Inicialización
@@ -24,12 +27,12 @@ Permission.init(
     action: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true, 
+      unique: true,
     },
   },
   {
     sequelize: DatabaseConnection.getInstance().getSequelize(),
     tableName: "permissions",
     timestamps: true,
-  }
+  },
 );

@@ -4,19 +4,22 @@ import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 // interface para los atributos de la tabla notification
 export interface NotificationAttributes {
   id?: number;
-  userId: number;     
-  productId: number;  
-  message: string;    
-  read: boolean;      
+  userId: number;
+  productId: number;
+  message: string;
+  read: boolean;
 }
 
 // definicion de la clase notification que extiende de model y implementa la interfaz NotificationAttributes
-export class Notification extends Model<NotificationAttributes> implements NotificationAttributes {
-  public id?: number;
-  public userId!: number;
-  public productId!: number;
-  public message!: string;
-  public read!: boolean;
+export class Notification
+  extends Model<NotificationAttributes>
+  implements NotificationAttributes
+{
+  declare id?: number;
+  declare userId: number;
+  declare productId: number;
+  declare message: string;
+  declare read: boolean;
 }
 
 // 3. Inicialización
@@ -50,12 +53,12 @@ Notification.init(
     read: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false, 
+      defaultValue: false,
     },
   },
   {
     sequelize: DatabaseConnection.getInstance().getSequelize(),
     tableName: "notifications",
     timestamps: true,
-  }
+  },
 );

@@ -3,16 +3,19 @@ import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 
 // contrato de atributos de la tabla subscription
 interface SubscriptionAttributes {
-    id?: number;
-    userId: number;
-    productId: number;
-};
+  id?: number;
+  userId: number;
+  productId: number;
+}
 
-export class Subscription extends Model<SubscriptionAttributes> implements SubscriptionAttributes {
-    public id?: number;
-    public userId!: number;
-    public productId!: number;
-};
+export class Subscription
+  extends Model<SubscriptionAttributes>
+  implements SubscriptionAttributes
+{
+  declare id?: number;
+  declare userId: number;
+  declare productId: number;
+}
 
 // inicializar la tabla subscription
 
@@ -50,5 +53,5 @@ Subscription.init(
         fields: ["userId", "productId"], // esto es para evitar que un usuario se suscriba al mismo producto mas de una vez
       },
     ],
-  }
+  },
 );

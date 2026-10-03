@@ -16,13 +16,16 @@ export interface ProductAttributes {
 }
 
 // clase Product
-export class Product extends Model<ProductAttributes> implements ProductAttributes {
-  public id?: number;
-  public name!: string;
-  public description!: string;
-  public price!: number;
-  public stock!: number;
-  public status!: ProductStatus;
+export class Product
+  extends Model<ProductAttributes>
+  implements ProductAttributes
+{
+  declare id?: number;
+  declare name: string;
+  declare description: string;
+  declare price: number;
+  declare stock: number;
+  declare status: ProductStatus;
 }
 
 // inicializacion del modelo Product
@@ -61,5 +64,5 @@ Product.init(
     sequelize: DatabaseConnection.getInstance().getSequelize(),
     tableName: "products",
     timestamps: true,
-  }
+  },
 );

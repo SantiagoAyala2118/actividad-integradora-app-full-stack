@@ -4,14 +4,14 @@ import { DatabaseConnection } from "../config/DatabaseConnection.ts";
 // Contrato de atributos para el modelo Role
 
 export interface RoleAttributes {
-    id?: number;
-    name: string;
-};
+  id?: number;
+  name: string;
+}
 
 // clase Role
 export class Role extends Model<RoleAttributes> implements RoleAttributes {
-  public id?: number;
-  public name!: string;
+  declare id?: number;
+  declare name: string;
 }
 
 // inicializacion del modelo Role
@@ -32,5 +32,5 @@ Role.init(
     sequelize: DatabaseConnection.getInstance().getSequelize(),
     tableName: "roles",
     timestamps: true,
-  }
+  },
 );
