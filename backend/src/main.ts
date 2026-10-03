@@ -1,15 +1,16 @@
 import "dotenv/config";
-
 import { DatabaseConnection } from "./config/DatabaseConnection.ts";
+import "./models/index.ts";
 
 async function main() {
-  const a = DatabaseConnection.getInstance();
-  const b = DatabaseConnection.getInstance();
+  const sequelize = DatabaseConnection.getInstance().getSequelize();
+  await sequelize.authenticate();
+  await sequelize.sync();
+  console.log("Tablas creadas");
 
-  await a.getSequelize().authenticate();
-  console.log("¿Misma instancia?", a === b); // true
+  console.log(sequelize.getDatabaseName());
+  console.log(await sequelize.getQueryInterface().showAllTables());
 }
-console.log("Conectado a PostgreSQL");
 
 main().catch((error) => {
   console.error("Error al iniciar:", error);
