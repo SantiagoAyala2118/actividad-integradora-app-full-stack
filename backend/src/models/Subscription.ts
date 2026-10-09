@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { DatabaseConnection } from "../config/DatabaseConnection.ts";
+import type { Product } from "./Product.ts";
 
 // contrato de atributos de la tabla subscription
 interface SubscriptionAttributes {
@@ -15,6 +16,7 @@ export class Subscription
   declare id?: number;
   declare userId: number;
   declare productId: number;
+  declare Product?: Product;
 }
 
 // inicializar la tabla subscription
