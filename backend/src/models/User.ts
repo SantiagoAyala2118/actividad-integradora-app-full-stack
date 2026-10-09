@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import { DatabaseConnection } from "../config/DatabaseConnection.ts";
-import type { Role } from "./Role.ts";
 
 // 1. esta es la interfaz con los atributos del usuario
 export interface UserAttributes {
@@ -12,12 +11,11 @@ export interface UserAttributes {
 }
 
 export class User extends Model<UserAttributes> implements UserAttributes {
-  declare id?: number;
-  declare name: string;
-  declare email: string;
-  declare password: string;
-  declare roleId: number;
-  declare Role?: Role;
+  public id?: number;
+  public name!: string;
+  public email!: string;
+  public password!: string;
+  public roleId!: number;
 }
 
 User.init(
