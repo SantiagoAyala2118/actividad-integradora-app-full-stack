@@ -7,7 +7,7 @@ export class UserRepository implements IUserRepository {
     return User.findAll();
   }
 
-  async findById(id: string): Promise<User | null> {
+  async findById(id: number): Promise<User | null> {
     return User.findByPk(id, { attributes: { exclude: ["password"] } });
   }
 
