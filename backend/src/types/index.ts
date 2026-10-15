@@ -1,10 +1,5 @@
 import type { UserAttributes } from "../models/User.ts";
-
-export enum ProductStatus {
-  DISPONIBLE = "DISPONIBLE",
-  SIN_STOCK = "SIN_STOCK",
-  DISCONTINUADO = "DISCONTINUADO",
-}
+import type { ProductStatus } from "../models/Product.ts";
 
 // Lo que viaja dentro del JWT y queda en req.user
 export interface AuthUser {
