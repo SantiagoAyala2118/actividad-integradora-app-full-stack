@@ -5,7 +5,7 @@ export interface ISubscriptionRepository {
 
   delete(userId: number, productId: number): Promise<boolean>;
 
-  find(): Promise<Subscription[] | []>;
+  find(userId: number, productId: number): Promise<Subscription | null>;
 
   findByProductId(productId: number): Promise<Subscription[]>;
 

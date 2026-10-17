@@ -1,5 +1,6 @@
 import { Subscription } from "../models/Subscription.ts";
 import type { ISubscriptionRepository } from "./interfaces/ISubscriptionRepository.ts";
+import { Product } from "../models/Product.ts";
 
 export class SubscriptionRepository implements ISubscriptionRepository {
   async create(userId: number, productId: number): Promise<Subscription> {
@@ -13,8 +14,8 @@ export class SubscriptionRepository implements ISubscriptionRepository {
     return delSubs > 0;
   }
 
-  async find(): Promise<Subscription[] | []> {
-    return Subscription.findAll();
+  async find(userId: number, productId: number): Promise<Subscription | null> {
+    return Subscription.findOne({ where: { userId, productId } });
   }
 
   async findByProductId(productId: number): Promise<Subscription[]> {
@@ -22,6 +23,6 @@ export class SubscriptionRepository implements ISubscriptionRepository {
   }
 
   async findByUserId(userId: number): Promise<Subscription[]> {
-    return Subscription.findAll({ where: { userId } });
+    return Subscription.findAll({ where: { userId }, include: [Product] });
   }
 }
