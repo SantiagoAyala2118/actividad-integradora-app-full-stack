@@ -2,7 +2,7 @@ import {
   Notification,
   type NotificationAttributes,
 } from "../models/Notification.ts";
-import type { INotificationRepository } from "./interfaces/INotification.ts";
+import type { INotificationRepository } from "./interfaces/INotificationRepository.ts";
 
 export class NotifcationRepository implements INotificationRepository {
   async create(
