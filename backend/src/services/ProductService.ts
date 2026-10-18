@@ -1,12 +1,16 @@
 import { AppError } from "../errors/appError.ts";
 import type { IProductRepository } from "../repository/interfaces/IProductRepository.ts";
 import type { Product, ProductAttributes } from "../models/Product.ts";
+import type { ISubject } from "../observer/interfaces/ISubject.ts";
+import type { ProductStatus } from "../models/Product.ts";
 
 export class ProductService {
   private readonly productRepository: IProductRepository;
+  private readonly publisher: ISubject;
 
-  constructor(productRepository: IProductRepository) {
+  constructor(productRepository: IProductRepository, publisher: ISubject) {
     this.productRepository = productRepository;
+    this.publisher = publisher;
   }
 
   // Obtener Todos
@@ -58,5 +62,28 @@ export class ProductService {
     if (!deleted) {
       throw new AppError("Producto no encontrado", 404);
     }
+  }
+
+  async changeStatus(id: number, newStatus: ProductStatus): Promise<Product> {
+    const product = await this.productRepository.findById(id);
+    if (!product) throw new AppError("Producto no encontrado", 404);
+
+    const oldStatus = product.status;
+    if (newStatus === oldStatus)
+      throw new AppError("El producto ya se encuentra en ese estado", 400);
+
+    const updated = await this.productRepository.update(id, {
+      status: newStatus,
+    });
+    if (!updated) throw new AppError("Producto no encontrado", 404);
+
+    await this.publisher.notify({
+      productId: id,
+      productName: updated.name,
+      oldStatus,
+      newStatus,
+    });
+
+    return updated;
   }
 }
