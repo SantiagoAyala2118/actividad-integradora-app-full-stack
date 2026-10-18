@@ -20,7 +20,6 @@ export interface ProductStatusChangedEvent {
 // se llama NotificationData para no chocar con el modelo Notification de Sequelize.
 export interface NotificationData {
   userId: number;
-  userEmail: string;
   productId: number;
   productName: string;
   oldStatus: ProductStatus;
