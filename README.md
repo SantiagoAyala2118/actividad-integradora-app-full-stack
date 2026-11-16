@@ -5,9 +5,8 @@
 **Organización del backend:** Carpeta por tipo de archivo
 
 ## Integrantes
-- Apellido, Nombre — usuario de GitHub
-- Apellido, Nombre — usuario de GitHub
-- Apellido, Nombre — usuario de GitHub
+- Ayala, Santiago — [SantiagoAyala2118](https://github.com/SantiagoAyala2118)
+- Zigaran, Lucas — [Simetriq](https://github.com/Simetriq)
 
 ## Descripción
 Aplicación full stack en TypeScript para gestionar tickets de soporte. Los usuarios se registran, inician sesión con JWT y, según su rol, pueden ver, crear, editar, cambiar de estado o eliminar tickets. Cualquier usuario puede suscribirse a un ticket, y cada vez que cambia su estado recibe una notificación in-app (con contador de no leídas) y se imprime una línea en la consola del backend.
